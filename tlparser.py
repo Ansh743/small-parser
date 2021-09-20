@@ -1,4 +1,6 @@
 import sys
+import LogParser
+
 
 def main():
     print('Test')
