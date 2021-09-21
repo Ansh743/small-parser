@@ -1,9 +1,14 @@
 import sys
-import LogParser
+from LogParser import LogParser
 
 
 def main():
-    print('Test')
+    file_name = sys.argv[1]
+
+    lp = LogParser(file_name)
+    lp.parse()
+    print(lp.time)
+
 
 if __name__ == '__main__':
     main()
