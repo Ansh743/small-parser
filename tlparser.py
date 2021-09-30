@@ -1,3 +1,5 @@
+#author - Anshul Maske (2830914)
+
 import sys
 from LogParser import LogParser
 

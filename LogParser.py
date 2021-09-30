@@ -1,3 +1,4 @@
+#author - Anshul Maske (2830914)
 class LogParser():
     def __init__(self, file) -> None:
         self.file_name = file
@@ -30,17 +31,16 @@ class LogParser():
         
         #print(self.start, self.stop, hrs,'hr ', mins, 'mins')
         self.time_hr += hrs
-        self.time_min += mins
-        return 
+        self.time_min += mins 
 
     def open_file(self):
-        with open(self.file_name, 'rt') as f:
+        with open(self.file_name, 'r') as f:
             self.content = f.read()
 
     def time_cal(self):
-        self.time_hr += self.time_min//60
+        self.time_hr += (self.time_min//60)
         self.time_min = (self.time_min%60)
-        self.time = str(self.time_hr)+'hrs '+str(self.time_min)+'mins'
+        self.time = str(self.time_hr)+' hours '+str(self.time_min)+' minutes'
 
     def reset(self) -> None:
         self.time_min = 0
@@ -48,7 +48,6 @@ class LogParser():
 
         return None
 
-    #TODO: parse funtion
     def parse(self):
         con = self.content
 
@@ -60,17 +59,20 @@ class LogParser():
         for line in individual_lines:
             if 'am' in line or 'pm' in line:
                 flag = 0
-                for i in range(len(line)-1):
+                for i in range(len(line)):
                     if flag > 2:
+                        self.start = ''
+                        self.stop = ''
                         break
-                    if flag == 0 and (line[i:i+2] == 'am' or line[i:i+2] == 'pm'):
+                    if flag == 0 and (line[i:i+2].__eq__('am') or line[i:i+2].__eq__('pm')):
                         self.start = line[i-5:i]
                         flag += 1
-                    elif flag == 1 and (line[i:i+2] == 'am' or line[i:i+2] == 'pm'):
+                    elif flag == 1 and (line[i:i+2].__eq__('am') or line[i:i+2].__eq__('pm')):
                         self.stop = line[i-5:i]
                         flag += 1
                     elif flag == 2:
                         self.calcuate()
+                        flag = 0
                         break
             else:
                 pass
