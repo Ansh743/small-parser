@@ -9,7 +9,6 @@ class LogParser():
         self.open_file()
         self.start = ''
         self.stop = ''
-        return None
 
     def calcuate(self):
         smin = int(self.start[-2:])
@@ -29,7 +28,6 @@ class LogParser():
         else:
             hrs = hrs + ehr - shr
         
-        #print(self.start, self.stop, hrs,'hr ', mins, 'mins')
         self.time_hr += hrs
         self.time_min += mins 
 
@@ -41,12 +39,6 @@ class LogParser():
         self.time_hr += (self.time_min//60)
         self.time_min = (self.time_min%60)
         self.time = str(self.time_hr)+' hours '+str(self.time_min)+' minutes'
-
-    def reset(self) -> None:
-        self.time_min = 0
-        self.time = 0
-
-        return None
 
     def parse(self):
         con = self.content
@@ -77,4 +69,4 @@ class LogParser():
             else:
                 pass
         self.time_cal()
-        return self.time
+        return 
