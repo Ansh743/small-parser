@@ -2,12 +2,12 @@
 
 import sys
 from LogParser import LogParser
+from flask import Flask, render_template
 
 
 def main():
-    file_name = sys.argv[1]
-
-    lp = LogParser(file_name)
+    file_name = sys.argv[1:]
+    lp = LogParser(file_name[0])
     lp.parse()
     print(lp.time)
 

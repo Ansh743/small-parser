@@ -1,12 +1,23 @@
 #author - Anshul Maske (2830914)
 class LogParser():
-    def __init__(self, file) -> None:
-        self.file_name = file
+    def __init__(self) -> None:
         self.time_min = 0
         self.time_hr = 0
         self.time = ''
         self.content = ''
+        self.start = ''
+        self.stop = ''
+
+    def setFile(self, file):
+        self.file_name = file
         self.open_file()
+    
+    def reset(self):
+        self.file_name = ''
+        self.time_min = 0
+        self.time_hr = 0
+        self.time = ''
+        self.content = ''
         self.start = ''
         self.stop = ''
 

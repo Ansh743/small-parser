@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>`Log Parser`</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='../static/stylesheets/style.css'>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script></script>
+</head>
+
+<body style="height: 97vh;">
+    <div class="container">
+        <form action="/submit" method="post">
+            <label for="fName">Select a pre-loaded log file:</label>
+            <select name="fName" id="fName">
+                {% for item in fileList %}
+                    <option value="{{item}}">{{item}}</option>
+                {% endfor %}
+            </select>
+            <a href="/">
+                <button>Calculate time</button>
+            </a>
+        </form> 
+        <center>
+            <p>
+                Time taken for {{selected_file}}: {{result_time}}
+            </p>
+        </center>
+    </div>
+</body>
+
+</html>
