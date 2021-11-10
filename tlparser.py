@@ -7,7 +7,8 @@ from flask import Flask, render_template
 
 def main():
     file_name = sys.argv[1:]
-    lp = LogParser(file_name[0])
+    lp = LogParser()
+    lp.setFile(file_name[0])
     lp.parse()
     print(lp.time)
 

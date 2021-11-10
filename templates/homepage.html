@@ -1,35 +1,64 @@
 <!DOCTYPE html>
 <html>
+    <head>
+        <meta charset='utf-8'>
+        <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+        <title>`Log Parser`</title>
+        <meta name='viewport' content='width=device-width, initial-scale=1'>
+        <link rel='stylesheet' type='text/css' media='screen' href='../static/stylesheets/style.css'>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    </head>
 
-<head>
-    <meta charset='utf-8'>
-    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>`Log Parser`</title>
-    <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' type='text/css' media='screen' href='../static/stylesheets/style.css'>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script></script>
-</head>
+    <body style="background-color: cadetblue;">
 
-<body style="height: 97vh;">
-    <div class="container">
-        <form action="/submit" method="post">
-            <label for="fName">Select a pre-loaded log file:</label>
-            <select name="fName" id="fName">
-                {% for item in fileList %}
-                    <option value="{{item}}">{{item}}</option>
-                {% endfor %}
-            </select>
-            <a href="/">
-                <button>Calculate time</button>
-            </a>
-        </form> 
-        <center>
-            <p>
-                Time taken for {{selected_file}}: {{result_time}}
-            </p>
-        </center>
-    </div>
-</body>
+        <div class="container">
+            <center>
+                <div class="attribution">
+                    <h2>Author of the project - Anshul Maske
+                        <a class="button" href="mailto:anshulmaske42@gmail.com">
+                            <img class="email" src="../static/assets/email.png" alt="">
+                        </a>
+                    </h2>
+                    <h3>CSU ID - 2830914</h3>
+                    <h3><i>Instructor- Prof. Weidong Xiong</i></h3>
+                    
+                </div>
+            </center>
 
+            <div class="sized_box_1">
+                <hr style="border-color: cadetblue;">
+            </div>
+
+            <center>
+                <form action="/submit" method="post" enctype = "multipart/form-data">
+                    <label for="fName" style="font-size: 17px;">Select a pre-loaded log file:</label>
+                    <select name="fName" id="fName">
+                        <option value="None">Select file</option>
+                        {% for item in fileList %}
+                            <option value="{{item}}">{{item}}</option>
+                        {% endfor %}
+                    </select>
+                    <p>Or</p>
+                    <input type="file" name="uploadedFile" id="usr_file" style="display:none;"/>
+                    <label for="usr_file" class="upload_button">Click here to upload a log file.</label>
+                    
+                    <div class="sized_box_2"></div>
+                    
+                    <a href="/">
+                        <button class="calculate_time_btn">
+                            Calculate time
+                            <img class="calculate_time_img" src="../static/assets/timing.png" alt="">
+                        </button>
+                    </a>
+                </form>
+            </center> 
+            {% if selected == true %}
+                <center>
+                    <p>
+                        Time taken for {{selected_file}}: {{result_time}}
+                    </p>
+                </center>
+            {% endif %}
+        </div>
+    </body>
 </html>
