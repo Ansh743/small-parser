@@ -23,15 +23,15 @@
 }
 .container::-webkit-scrollbar-track {
     background: #daf2f5;
-    border-radius: 10px;
+    border-radius: 6px;
 }
 .container::-webkit-scrollbar-thumb {
-    border-radius: 10px;
-    background: rgb(221, 220, 220); 
+    border-radius: 6px;
+    background: rgb(179, 179, 179); 
 }
 .container::-webkit-scrollbar-thumb:hover {
-    border-radius: 10px;
-    background: #555; 
+    border-radius: 6px;
+    background: rgb(117, 117, 117); 
 }
 
 
@@ -77,11 +77,14 @@
 }
 .sized_box_2{
     box-sizing: border-box;
-    height: 75px;
+    height: 65px;
 }
 .email{
     vertical-align: middle;
     height: 23px;
+}
+.email:hover { 
+    transform: scale(1.1); 
 }
 
 .help{
@@ -90,4 +93,8 @@
     height: 25px;
     bottom: 0%;
     margin-top: 5%;
+}
+
+.help:hover { 
+    transform: scale(1.1); 
 }

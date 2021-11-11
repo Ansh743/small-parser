@@ -19,6 +19,10 @@ def hello_world():
     fl = getFileList()
     return render_template("homepage.html", fileList = fl, selected = False)
 
+@app.route("/about")
+def about():
+    return render_template("about.html")
+
 @app.route("/submit", methods=["POST"])
 def submit():
     parser = LogParser()

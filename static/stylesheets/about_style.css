@@ -20,13 +20,6 @@
     font-size: larger;
 }
 
-.warning_img{
-    width: 200px;
-}
-.back_img{
-    height: 15px;
-}
-
 .con::-webkit-scrollbar {
     width: 7px;
 }
