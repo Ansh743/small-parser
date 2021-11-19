@@ -52,9 +52,9 @@ class LogParser():
         self.time = str(self.time_hr)+' hours '+str(self.time_min)+' minutes'
 
     def parse(self):
-        con = self.content
+        con = self.content.lower()
 
-        clear_back_index = con.index('Time Log:')
+        clear_back_index = con.index('time log:')
         con = con[clear_back_index::]
         con = con.lower()
         individual_lines = con.splitlines()

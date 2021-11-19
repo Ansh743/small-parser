@@ -1,4 +1,4 @@
-from flask import Flask,render_template, request
+from flask import Flask,render_template, request, url_for
 from LogParser import LogParser
 import os
 
@@ -29,22 +29,24 @@ def submit():
     title = request.form.get("fName")
     parser.reset()
     fl = getFileList()
+    try:
+        if title != "None":    
+            parser.setFile(os.getcwd()+sep+'logs'+sep+title)
+            parser.parse()
+            time = parser.time
+            return render_template("homepage.html", fileList = fl, result_time = time, selected_file = title, selected = True)
 
-    if title != "None":    
-        parser.setFile(os.getcwd()+sep+'logs'+sep+title)
-        parser.parse()
-        time = parser.time
-        return render_template("homepage.html", fileList = fl, result_time = time, selected_file = title, selected = True)
-
-    file = request.files['uploadedFile']
-    if file.filename != '':
-        file.save(os.path.join(app.config['UPLOAD_FOLDER'], file.filename))
-        parser.setFile('.'+sep+'uploaded_files'+sep+file.filename)
-        parser.parse()
-        time = parser.time
-        return render_template("homepage.html", fileList = fl, result_time = time, selected_file = file.filename, selected = True)
-    del parser
-    return render_template("error.html")
+        file = request.files['uploadedFile']
+        if file.filename != '':
+            file.save(os.path.join(app.config['UPLOAD_FOLDER'], file.filename))
+            parser.setFile('.'+sep+'uploaded_files'+sep+file.filename)
+            parser.parse()
+            time = parser.time
+            return render_template("homepage.html", fileList = fl, result_time = time, selected_file = file.filename, selected = True)
+        del parser
+        return render_template("error.html")
+    except:
+        return url_for("error")
 
 def getFileList():
     fileList = list((os.listdir(os.getcwd()+sep+'logs'+sep)))
