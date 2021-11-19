@@ -6,10 +6,14 @@
         <title>`Log Parser`</title>
         <meta name='viewport' content='width=device-width, initial-scale=1'>
         <link rel='stylesheet' type='text/css' media='screen' href='../static/stylesheets/style.css'>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script>
+            function blur(){
+                console.log("Blured")
+                document.getElementById("body").style = "-webkit-filter: blur(2px); -moz-filter: blur(2px); -o-filter: blur(2px); -ms-filter: blur(2px); filter: blur(2px);"            }
+        </script>
     </head>
 
-    <body style="background-color: cadetblue;">
+    <body id="body" style="background-color: cadetblue;">
 
         <div class="container">
             <center>
@@ -45,24 +49,30 @@
                     <div class="sized_box_2"></div>
                     
                     <a href="/">
-                        <button class="calculate_time_btn">
+                        <button onclick="blur()" class="calculate_time_btn">
                             Calculate time
                             <img class="calculate_time_img" src="../static/assets/timing.png" alt="">
                         </button>
                     </a>
                 </form>
             </center> 
-            {% if selected == true %}
-                <center>
-                    <p>
-                        Time taken for {{selected_file}}: {{result_time}}
-                    </p>
-                </center>
-            {% endif %}
+
 
             <a href="/about">
                 <img class="help" src="../static/assets/question.png" alt="">
             </a>
         </div>
+        {% if selected == true %}
+                <center>
+                    <div class="pop_answer" style="display: block;">
+                        <p>
+                            Time taken for <mark style="opacity: 75%;">{{selected_file}}</mark>: {{result_time}}
+                        </p>
+                        <a href="/">
+                            <img class="pop_up_close_img" src="../static/assets/close-button.png" alt="">
+                        </a>
+                    </div>
+                </center>
+            {% endif %}
     </body>
 </html>

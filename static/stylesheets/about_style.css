@@ -21,7 +21,7 @@
 }
 
 .con::-webkit-scrollbar {
-    width: 7px;
+    width: 8.5px;
 }
 .con::-webkit-scrollbar-track {
     background: #daf2f5;
